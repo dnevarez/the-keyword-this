@@ -2,18 +2,23 @@
   // 1) What is the purpose of the 'this keyword'?
 
       //Answer
+      //refer to an object.
 
   // 2) What are the four rules that govern what the 'this keyword' is bound to and describe each?
 
       //Answer
+      //default; implicit; .bind(), call(), apply()
 
   // 3) What is the difference between call and apply?
 
       //Answer
+      // call - parameters after the first take in the parameters of a function
+      //apply - only has two parameters with the second being an array whose values are mapped onto the parameters of a function
 
   // 4) What does .bind do?
 
       //Answer
+      //bind assigns the 'this' keyword to something specific. the rest of its parameters call in the parameters of the function
 
 
 //Next Problem
@@ -24,16 +29,38 @@
   //getUsername --> which is a function that returns the current object's username property. *Don't use 'user' instead use the 'this' keyword*
 
     //Code Here
+    var user = {
+      username: "hammySam",
+      email: "hammy@hammysam.com",
+      getUsername: function () {
+        return this.username;
+      }
+    }
 
 //Now, invoke the getUsername method and verify you got the username of the object and not anything else.
 
 
-//Next Problem
+user.getUsername();
 
 
 // Write the function definitions which will make the following function invocations function properly.
 
   //Function Invocations Here
+function Car(make, model, year) {
+    this.make = make;
+    this.model = model;
+    this.year = year;
+    this.moveCar = function () {
+      this.move = 0;
+      for (var prop in this) {
+        this.move+= 10;
+      }
+      return this.move
+    }
+}
+
+
+
 
 var prius = new Car('Toyota', 'Prius', 2011);
 var mustang = new Car('Ford', 'Mustang', 2013);
